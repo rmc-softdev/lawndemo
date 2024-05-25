@@ -3,14 +3,14 @@ import styles from '@/styles/SearchedAnime.module.css';
 import Link from 'next/link';
 
 const SearchedAnimes = ({ searchedAnime }) => {
-
   const renderContent = () => {
     const reducedContent = searchedAnime.slice(0, 5);
     return reducedContent.map(anime => (
       <Link
         onClick={() => queryClient.setQueryData(['selectedAnime'], anime)}
-
-        key={anime.id} href={`/anime/${anime.id}`}>
+        key={anime.id}
+        href={`/anime/${anime.id}`}
+      >
         <li key={anime.id}>
           <div className={styles.resultsItems}>
             <div className={styles.resultContent}>
@@ -21,7 +21,6 @@ const SearchedAnimes = ({ searchedAnime }) => {
           </div>
         </li>
       </Link>
-
     ));
   };
 

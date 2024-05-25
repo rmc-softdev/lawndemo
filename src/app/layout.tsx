@@ -7,7 +7,6 @@ import { getData } from '@/server/actions/getData';
 
 import { store, ReduxProvider } from '@/store/store';
 
-
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -35,7 +34,6 @@ export default async function RootLayout({
             <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>
           </QueryProvider>
         </ReduxProvider>
-
       </body>
     </html>
   );

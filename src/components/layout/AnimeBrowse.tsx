@@ -1,10 +1,12 @@
 'use client';
 import { queryClient } from '@/client/QueryProvider';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { sortBy } from '@/store/sort/sortSlice';
+import Sort from '../Sort';
+import Animes from './Animes';
 
 export async function getData() {
   try {
@@ -45,7 +47,7 @@ export async function getDataDate() {
   }
 }
 
-const AnimesContainer = () => {
+const AnimeBrowse = () => {
   const [sort, setSort] = useState('');
 
   // Determine the correct query function based on sort state
@@ -56,51 +58,17 @@ const AnimesContainer = () => {
     queryFn: fetchData,
   });
 
-  const state = useSelector((state) => state)
-  const dispatch = useDispatch()
-
-  console.log(state)
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
 
   return (
     <div>
-      <button
-        onClick={() => {
-          setSort('popularity');
-          dispatch(sortBy('popularity'))
-          refetch();
-        }}
-      >
-        Popularity
-      </button>
-      <button
-        onClick={() => {
-          setSort('date');
-          dispatch(sortBy('date'))
-          refetch();
-        }}
-      >
-        Date
-      </button>
-      <button
-        onClick={() => {
-          setSort('');
-          dispatch(sortBy(''))
-          refetch();
-        }}
-      >
-        Default
-      </button>
-
+      <Sort setSort={setSort} sortBy={sortBy} dispatch={dispatch} refetch={refetch} />
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      {data?.data?.map(anime => <Link
-        onClick={() => queryClient.setQueryData(['selectedAnime'], anime)}
-
-        key={anime.id} href={`/anime/${anime.id}`}>
-        <div> {anime.attributes.slug} </div></Link>)
-      }
-    </div >
+      <Animes animes={data} />
+    </div>
   );
 };
 
-export default AnimesContainer;
+export default AnimeBrowse;

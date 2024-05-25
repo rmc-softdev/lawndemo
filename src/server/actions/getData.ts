@@ -1,4 +1,3 @@
-
 type Animes = {
   id: number;
   attributes: {
@@ -16,4 +15,3 @@ export async function getData() {
     return { error };
   }
 }
-

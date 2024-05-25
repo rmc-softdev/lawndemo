@@ -20,10 +20,8 @@ const AnimeSearch = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['anime-search', text],
     queryFn: fetchAnimes,
-    enabled: debouncedText ? !!debouncedText : !!text
-
+    enabled: debouncedText ? !!debouncedText : !!text,
   });
-
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -34,9 +32,7 @@ const AnimeSearch = () => {
     };
   }, [text]);
 
-
-
-  const shouldDisplaySearch = text && data
+  const shouldDisplaySearch = text && data;
 
   return (
     <div className={styles.container}>
