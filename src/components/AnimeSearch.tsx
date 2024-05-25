@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SearchedAnimes } from '@/components/SearchedAnimes';
 
 import styles from '@/styles/AnimeSearch.module.css';
 
-export const AnimeSearch = () => {
+const AnimeSearch = () => {
   const [text, setText] = useState('');
   const [fill, setFill] = useState('#acacac');
-  const searchedAnime = [];
+
 
   return (
     <div className={styles.container}>
@@ -30,7 +30,7 @@ export const AnimeSearch = () => {
           />
         </div>
       </form>
-      {text !== '' && <SearchedAnimes searchedAnime={searchedAnime} />}
+      {/* {text !== '' && <SearchedAnimes searchedAnime={searchedAnime} />} */}
     </div>
   );
 };
