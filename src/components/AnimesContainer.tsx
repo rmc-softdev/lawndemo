@@ -1,6 +1,7 @@
 'use client';
 import { queryClient } from '@/client/QueryProvider';
 import { useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 export async function getData() {
@@ -82,7 +83,8 @@ const AnimesContainer = () => {
 
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      {data?.data?.map(anime => <div key={anime.id}> {anime.attributes.slug} </div>)}
+      {data?.data?.map(anime => <Link key={anime.id} href={`/anime/${anime.id}`}>
+        <div> {anime.attributes.slug} </div></Link>)}
     </div>
   );
 };

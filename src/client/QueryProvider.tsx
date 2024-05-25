@@ -15,7 +15,7 @@ const QueryProvider = ({ children }: QueryProviderProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ReactQueryDevtools initialIsOpen={process.env.NODE_ENV === 'development'} />
     </QueryClientProvider>
   );
 };

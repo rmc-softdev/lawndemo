@@ -1,14 +1,42 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { SearchedAnimes } from '@/components/SearchedAnimes';
-
 import styles from '@/styles/AnimeSearch.module.css';
+
+const fetchAnimes = async ({ queryKey }) => {
+  const [, text] = queryKey; // Destructure to get the text
+  if (!text) return { data: [] };
+  const response = await fetch(`https://kitsu.io/api/edge/anime?page[limit]=10&page[offset]=0&filter[text]=${text}`);
+  const data = await response.json();
+  return data;
+};
 
 const AnimeSearch = () => {
   const [text, setText] = useState('');
   const [fill, setFill] = useState('#acacac');
+  const [debouncedText, setDebouncedText] = useState('');
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['anime-search', text],
+    queryFn: fetchAnimes,
+    enabled: debouncedText ? !!debouncedText : !!text
 
+  });
+
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedText(text);
+    }, 1000);
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [text]);
+
+
+
+  const shouldDisplaySearch = text && data
 
   return (
     <div className={styles.container}>
@@ -30,7 +58,9 @@ const AnimeSearch = () => {
           />
         </div>
       </form>
-      {/* {text !== '' && <SearchedAnimes searchedAnime={searchedAnime} />} */}
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {shouldDisplaySearch && <SearchedAnimes searchedAnime={data.data} />}
     </div>
   );
 };
