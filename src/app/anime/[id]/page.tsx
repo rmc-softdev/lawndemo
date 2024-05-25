@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 const fetchAnimeById = async ({ queryKey }) => {
     const [, id] = queryKey;
@@ -14,9 +14,13 @@ const fetchAnimeById = async ({ queryKey }) => {
 };
 
 const SingleAnimePage = ({ params: { id } }) => {
+    const queryClient = useQueryClient();
+    const cachedAnime = queryClient.getQueryData(['selectedAnime']);
+
     const { data, isLoading, error } = useQuery({
         queryKey: ['anime-detail', id],
         queryFn: fetchAnimeById,
+        initialData: cachedAnime ? { data: cachedAnime } : undefined,
         enabled: !!id,
     });
 

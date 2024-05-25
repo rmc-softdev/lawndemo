@@ -1,6 +1,6 @@
 import styles from '@/styles/SearchedAnime.module.css';
 
-export const SearchedAnimes = ({ searchedAnime }) => {
+const SearchedAnimes = ({ searchedAnime }) => {
 
   const renderContent = () => {
     const reducedContent = searchedAnime.slice(0, 5);

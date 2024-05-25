@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { SearchedAnimes } from '@/components/SearchedAnimes';
+import SearchedAnimes from '@/components/layout/SearchedAnimes';
 import styles from '@/styles/AnimeSearch.module.css';
 
 const fetchAnimes = async ({ queryKey }) => {

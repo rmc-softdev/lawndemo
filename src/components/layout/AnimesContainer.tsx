@@ -83,9 +83,13 @@ const AnimesContainer = () => {
 
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      {data?.data?.map(anime => <Link key={anime.id} href={`/anime/${anime.id}`}>
-        <div> {anime.attributes.slug} </div></Link>)}
-    </div>
+      {data?.data?.map(anime => <Link
+        onClick={() => queryClient.setQueryData(['selectedAnime'], anime)}
+
+        key={anime.id} href={`/anime/${anime.id}`}>
+        <div> {anime.attributes.slug} </div></Link>)
+      }
+    </div >
   );
 };
 
