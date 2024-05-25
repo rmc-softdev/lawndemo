@@ -1,8 +1,10 @@
 'use client';
 import { queryClient } from '@/client/QueryProvider';
+import { useDispatch, useSelector } from 'react-redux'
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+import { sortBy } from '@/store/sort/sortSlice';
 
 export async function getData() {
   try {
@@ -54,11 +56,17 @@ const AnimesContainer = () => {
     queryFn: fetchData,
   });
 
+  const state = useSelector((state) => state)
+  const dispatch = useDispatch()
+
+  console.log(state)
+
   return (
     <div>
       <button
         onClick={() => {
           setSort('popularity');
+          dispatch(sortBy('popularity'))
           refetch();
         }}
       >
@@ -67,6 +75,7 @@ const AnimesContainer = () => {
       <button
         onClick={() => {
           setSort('date');
+          dispatch(sortBy('date'))
           refetch();
         }}
       >
@@ -75,6 +84,7 @@ const AnimesContainer = () => {
       <button
         onClick={() => {
           setSort('');
+          dispatch(sortBy(''))
           refetch();
         }}
       >

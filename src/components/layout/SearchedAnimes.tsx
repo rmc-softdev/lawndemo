@@ -1,19 +1,27 @@
+import { queryClient } from '@/client/QueryProvider';
 import styles from '@/styles/SearchedAnime.module.css';
+import Link from 'next/link';
 
 const SearchedAnimes = ({ searchedAnime }) => {
 
   const renderContent = () => {
     const reducedContent = searchedAnime.slice(0, 5);
     return reducedContent.map(anime => (
-      <li key={anime.id}>
-        <div className={styles.resultsItems}>
-          <div className={styles.resultContent}>
-            <img src={anime?.attributes?.posterImage?.tiny} alt="" className={styles.resultContentImg} />
-            <span className={styles.resultsName}>{anime?.attributes?.canonicalTitle}</span>
+      <Link
+        onClick={() => queryClient.setQueryData(['selectedAnime'], anime)}
+
+        key={anime.id} href={`/anime/${anime.id}`}>
+        <li key={anime.id}>
+          <div className={styles.resultsItems}>
+            <div className={styles.resultContent}>
+              <img src={anime?.attributes?.posterImage?.tiny} alt="" className={styles.resultContentImg} />
+              <span className={styles.resultsName}>{anime?.attributes?.canonicalTitle}</span>
+            </div>
+            <div className={styles.resultsMedia}>{anime?.attributes?.showType.toUpperCase()}</div>
           </div>
-          <div className={styles.resultsMedia}>{anime?.attributes?.showType.toUpperCase()}</div>
-        </div>
-      </li>
+        </li>
+      </Link>
+
     ));
   };
 

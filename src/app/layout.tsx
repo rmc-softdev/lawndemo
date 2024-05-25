@@ -5,6 +5,9 @@ import QueryProvider from '@/client/QueryProvider';
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { getData } from '@/server/actions/getData';
 
+import { store, ReduxProvider } from '@/store/store';
+
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -27,9 +30,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryProvider>
-          <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>
-        </QueryProvider>
+        <ReduxProvider store={store}>
+          <QueryProvider>
+            <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>
+          </QueryProvider>
+        </ReduxProvider>
+
       </body>
     </html>
   );
