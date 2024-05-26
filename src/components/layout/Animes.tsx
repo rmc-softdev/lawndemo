@@ -5,14 +5,18 @@ import React from 'react';
 
 interface AnimesProps {
   animes?: {
-    data?: Anime[]
-  }
+    data?: Anime[];
+  };
 }
 const Animes = ({ animes }: AnimesProps) => {
   return animes?.data?.map(anime => (
-    <Link onClick={() => {
-      queryClient.setQueryData(['selectedAnime'], anime)
-    }} key={anime.id} href={`/anime/${anime.id}`}>
+    <Link
+      onClick={() => {
+        queryClient.setQueryData(['selectedAnime'], anime);
+      }}
+      key={anime.id}
+      href={`/anime/${anime.id}`}
+    >
       <div> {anime.attributes.slug} </div>
     </Link>
   ));

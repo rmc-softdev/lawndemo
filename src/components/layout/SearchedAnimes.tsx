@@ -4,7 +4,7 @@ import { Anime } from '@/types/anime';
 import Link from 'next/link';
 
 interface SearchedAnimesProps {
-  searchedAnime: Anime[]
+  searchedAnime: Anime[];
 }
 
 const SearchedAnimes = ({ searchedAnime }: SearchedAnimesProps) => {
@@ -13,7 +13,7 @@ const SearchedAnimes = ({ searchedAnime }: SearchedAnimesProps) => {
     return reducedContent.map(anime => (
       <Link
         onClick={() => {
-          queryClient.setQueryData(['selectedAnime'], anime)
+          queryClient.setQueryData(['selectedAnime'], anime);
         }}
         key={anime.id}
         href={`/anime/${anime.id}`}

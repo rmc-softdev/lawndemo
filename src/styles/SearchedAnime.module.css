@@ -1,5 +1,5 @@
 .results {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   width: 330px;
@@ -7,7 +7,7 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   position: relative;
-  background-color: 'red'
+  background-color: 'red';
 }
 
 .resultsTitle {
@@ -15,7 +15,7 @@
   background-color: #efeef1;
   padding: 10px;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #464646;
@@ -41,7 +41,6 @@
   align-items: flex-start;
   padding: 6px 0;
   background-color: #faf9fa;
-
 }
 
 .resultsItems:hover {

@@ -1,9 +1,8 @@
 import { SortOption } from '@/utils/getSortedAnimes';
 import React from 'react';
 
-
 interface SortProps {
-  handleSort: (sortOption: SortOption) => void
+  handleSort: (sortOption: SortOption) => void;
 }
 
 const Sort = ({ handleSort }: SortProps) => {
@@ -11,21 +10,21 @@ const Sort = ({ handleSort }: SortProps) => {
     <div>
       <button
         onClick={() => {
-          handleSort('popularity')
+          handleSort('popularity');
         }}
       >
         Popularity
       </button>
       <button
         onClick={() => {
-          handleSort('date')
+          handleSort('date');
         }}
       >
         Date
       </button>
       <button
         onClick={() => {
-          handleSort('')
+          handleSort('');
         }}
       >
         Default

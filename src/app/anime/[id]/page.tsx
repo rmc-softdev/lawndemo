@@ -4,7 +4,11 @@ import React from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import styles from '@/styles/SingleAnimePage.module.css';
 
-const fetchAnimeById = async ({ queryKey }) => {
+interface SortQuery {
+  queryKey: ['anime-detail', string];
+}
+
+const fetchAnimeById = async ({ queryKey }: SortQuery) => {
   const [, id] = queryKey;
   const response = await fetch(`https://kitsu.io/api/edge/anime/${id}`);
   if (!response.ok) {
@@ -14,7 +18,13 @@ const fetchAnimeById = async ({ queryKey }) => {
   return data;
 };
 
-const SingleAnimePage = ({ params: { id } }) => {
+interface SingleAnimePageProps {
+  params: {
+    id: string;
+  };
+}
+
+const SingleAnimePage = ({ params: { id } }: SingleAnimePageProps) => {
   const queryClient = useQueryClient();
   const cachedAnime = queryClient.getQueryData(['selectedAnime']);
 
@@ -32,9 +42,7 @@ const SingleAnimePage = ({ params: { id } }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>
-        {anime.attributes.titles.en || anime.attributes.titles.en_jp}
-      </h1>
+      <h1 className={styles.title}>{anime.attributes.titles.en || anime.attributes.titles.en_jp}</h1>
       <img
         src={anime.attributes.posterImage.original}
         alt={anime.attributes.titles.en || anime.attributes.titles.en_jp}

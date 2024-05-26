@@ -6,7 +6,7 @@ import SearchedAnimes from '@/components/layout/SearchedAnimes';
 import styles from '@/styles/AnimeSearch.module.css';
 
 interface SortQuery {
-  queryKey: ['anime-search', string]
+  queryKey: ['anime-search', string];
 }
 
 const fetchAnimes = async ({ queryKey }: SortQuery) => {
