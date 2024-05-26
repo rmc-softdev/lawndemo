@@ -1,35 +1,31 @@
+import { SortOption } from '@/utils/getSortedAnimes';
 import React from 'react';
 
+
 interface SortProps {
-  setSort: React.Dispatch<React.SetStateAction<string>>;
+  handleSort: (sortOption: SortOption) => void
 }
 
-const Sort = ({ setSort, dispatch, sortBy, refetch }: SortProps) => {
+const Sort = ({ handleSort }: SortProps) => {
   return (
     <div>
       <button
         onClick={() => {
-          setSort('popularity');
-          dispatch(sortBy('popularity'));
-          refetch();
+          handleSort('popularity')
         }}
       >
         Popularity
       </button>
       <button
         onClick={() => {
-          setSort('date');
-          dispatch(sortBy('date'));
-          refetch();
+          handleSort('date')
         }}
       >
         Date
       </button>
       <button
         onClick={() => {
-          setSort('');
-          dispatch(sortBy(''));
-          refetch();
+          handleSort('')
         }}
       >
         Default

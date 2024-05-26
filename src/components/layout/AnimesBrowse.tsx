@@ -4,26 +4,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { sortBy } from '@/store/sort/sortSlice';
 import Sort from '../Sort';
 import Animes from './Animes';
+import { sortBy } from '@/store/sort/sortSlice';
 import { SortOption, getSortedAnimes } from '@/utils/getSortedAnimes';
 
 
 const AnimesBrowse = () => {
-  const [sort, setSort] = useState<SortOption>('');
+  const sort = useSelector(state => state.sort.value)
 
-  const { isLoading, error, data, refetch } = useQuery({
+  const { isLoading, error, data, } = useQuery({
     queryKey: ['animes', sort],
     queryFn: getSortedAnimes,
   });
 
-  const state = useSelector(state => state);
   const dispatch = useDispatch();
+
+  const handleSort = (sortOption: SortOption) => {
+    dispatch(sortBy(sortOption));
+  }
+
 
   return (
     <div>
-      <Sort setSort={setSort} sortBy={sortBy} dispatch={dispatch} refetch={refetch} />
+      <Sort handleSort={handleSort} />
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       <Animes animes={data} />

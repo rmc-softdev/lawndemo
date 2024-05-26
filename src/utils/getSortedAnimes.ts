@@ -7,8 +7,6 @@ interface SortQuery {
     queryKey: ['animes', SortOption]
 }
 
-
-
 export const getSortedAnimes = async ({ queryKey }: SortQuery) => {
     const [, sort] = queryKey;
     let SORT_URL;
