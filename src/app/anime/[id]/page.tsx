@@ -51,29 +51,47 @@ const SingleAnimePage = ({ params: { id } }: SingleAnimePageProps) => {
         alt={anime.attributes.titles.en || anime.attributes.titles.en_jp}
         className={styles.image}
       />
-      <p data-testId="anime-synopsis" className={styles.synopsis}>
-        {anime.attributes.synopsis}
-      </p>
-      <div className={styles.details}>
-        <div className={styles.detail}>
-          <strong>Type:</strong> {anime.attributes.showType}
-        </div>
-        <div className={styles.detail}>
-          <strong>Status:</strong> {anime.attributes.status}
-        </div>
-        <div className={styles.detail}>
-          <strong>Episodes:</strong> {anime.attributes.episodeCount}
-        </div>
-        <div className={styles.detail}>
-          <strong>Average Rating:</strong> {anime.attributes.averageRating}
-        </div>
-        <div className={styles.detail}>
-          <strong>Start Date:</strong> {anime.attributes.startDate}
-        </div>
-        <div className={styles.detail}>
-          <strong>End Date:</strong> {anime.attributes.endDate || 'Ongoing'}
+
+
+      <div className={styles.section}>
+        <p className={styles.synopsis}>{anime.attributes.synopsis}</p>
+
+        <div className={styles.details}>
+          <h4 className={styles.slogan}>Anime Details</h4>
+          <div className={styles.detail}>
+            <li>
+              <strong className={styles.strong}>English</strong>
+              <span>{anime.attributes.titles.en_jp}</span>
+            </li>
+            <li>
+              <strong className={styles.strong}>Japanese</strong>
+              <span>{anime.attributes.titles.ja_jp}</span>
+            </li>
+            <li>
+              <strong className={styles.strong}>Japanese(Romaji)</strong>
+              <span>{anime.attributes.abbreviatedTitles}</span>
+            </li>
+            <li>
+              <strong className={styles.strong}>Age Rating</strong>
+              <span>{anime.attributes.ageRating}</span>
+            </li>
+            <li>
+              <strong className={styles.strong}>Episodes released</strong>
+              <span>{anime.attributes.episodeLength}</span>
+            </li>
+            <li>
+              <strong className={styles.strong}>Start date</strong>
+              <span>{anime.attributes.start_date}</span>
+            </li>
+            <li>
+              <strong className={styles.strong}>Status</strong>
+              <span>{anime.attributes.status}</span>
+            </li>
+          </div>
         </div>
       </div>
+
+
     </div>
   );
 };
