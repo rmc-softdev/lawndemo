@@ -11,7 +11,7 @@ Explore the refactored project here: [Lawndemo](https://lawndemo-e6yw.vercel.app
 3. Run `npn run dev`
 4. Open on port `http://localhost:3000/`.
 
-As with any modern stack, it requires node 18+ and it's better suited for Unix-like systems. 
+As with any modern stack, it requires node 18+ and it's better suited for Unix-like systems.
 
 # Architecture.
 
@@ -22,11 +22,11 @@ The project has:
 - CI/CD
 - Linting, prettier and several other configurations and checks.
 - Uses latest tooling and techniques, such as next@14.
-    - server components
-    - server actions
-    - prefetching SSR
-    - app domain/layout
-    - and much more
+  - server components
+  - server actions
+  - prefetching SSR
+  - app domain/layout
+  - and much more
 - Uses react-query for caching API call.
 - Uses redux-toolkit for managing complex store interactions.
 - Debounce for searching with live caching for keeping track of the last searched entries.

@@ -11,6 +11,8 @@ import { SortOption, getSortedAnimes } from '@/utils/getSortedAnimes';
 const AnimesBrowse = () => {
   const sort = useSelector(selectSort);
 
+  console.log({ sort });
+
   const { isLoading, error, data } = useQuery({
     queryKey: ['animes', sort],
     queryFn: getSortedAnimes,

@@ -52,7 +52,6 @@ const SingleAnimePage = ({ params: { id } }: SingleAnimePageProps) => {
         className={styles.image}
       />
 
-
       <div className={styles.section}>
         <p className={styles.synopsis}>{anime.attributes.synopsis}</p>
 
@@ -90,8 +89,6 @@ const SingleAnimePage = ({ params: { id } }: SingleAnimePageProps) => {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

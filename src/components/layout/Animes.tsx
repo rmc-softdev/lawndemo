@@ -17,21 +17,23 @@ const Animes = ({ animes, isLoading }: AnimesProps) => {
 
   return (
     <div className={styles.animesContainer}>
-      {isLoading ? (
-        dummyData.map((_) => <div className={styles.animeCover}> <Skeleton width={'100%'} height={'100%'} variant='rectangular' animation='wave' /> </div>)
-      ) : (
-        animes?.data?.map((anime) => (
-
-          <Link
-            onClick={() => {
-              queryClient.setQueryData(['selectedAnime'], anime);
-            }}
-            href={`/anime/${anime.id}`}
-          >
-            <img className={styles.animeCover} alt="Poster image" src={anime.attributes.posterImage.medium} />
-          </Link>
-        ))
-      )}
+      {isLoading
+        ? dummyData.map(_ => (
+            <div className={styles.animeCover}>
+              {' '}
+              <Skeleton width={'100%'} height={'100%'} variant="rectangular" animation="wave" />{' '}
+            </div>
+          ))
+        : animes?.data?.map(anime => (
+            <Link
+              onClick={() => {
+                queryClient.setQueryData(['selectedAnime'], anime);
+              }}
+              href={`/anime/${anime.id}`}
+            >
+              <img className={styles.animeCover} alt="Poster image" src={anime.attributes.posterImage.medium} />
+            </Link>
+          ))}
     </div>
   );
 };

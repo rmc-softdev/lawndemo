@@ -1,12 +1,12 @@
 .animesContainer {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 16px;
-    row-gap: 16px;
-    max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 16px;
+  max-width: 800px;
 }
 
 .animeCover {
-    width: 180px;
-    height: 250px;
+  width: 180px;
+  height: 250px;
 }
