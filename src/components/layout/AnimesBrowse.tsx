@@ -6,12 +6,12 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Sort from '../Sort';
 import Animes from './Animes';
-import { sortBy } from '@/store/sort/sortSlice';
+import { selectSort, sortBy } from '@/store/sort/sortSlice';
 import { SortOption, getSortedAnimes } from '@/utils/getSortedAnimes';
 
 
 const AnimesBrowse = () => {
-  const sort = useSelector(state => state.sort.value)
+  const sort = useSelector(selectSort)
 
   const { isLoading, error, data, } = useQuery({
     queryKey: ['animes', sort],

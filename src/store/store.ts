@@ -1,6 +1,5 @@
 'use client';
 import { configureStore } from '@reduxjs/toolkit';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Provider } from 'react-redux';
 import { sortSlice } from './sort/sortSlice';
