@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import '@/styles/globals.css';
 import QueryProvider from '@/client/QueryProvider';
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { getData } from '@/server/actions/getData';

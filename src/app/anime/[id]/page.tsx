@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import styles from '@/styles/SingleAnimePage.module.css';
 
 const fetchAnimeById = async ({ queryKey }) => {
   const [, id] = queryKey;
@@ -24,20 +25,42 @@ const SingleAnimePage = ({ params: { id } }) => {
     enabled: !!id,
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (isLoading) return <p style={{ textAlign: 'center', marginTop: '20px' }}>Loading...</p>;
+  if (error) return <p style={{ textAlign: 'center', color: 'red', marginTop: '20px' }}>Error: {error.message}</p>;
 
   const anime = data.data;
 
   return (
-    <div>
-      <h1>{anime.attributes.titles.en || anime.attributes.titles.en_jp}</h1>
-      <p>{anime.attributes.synopsis}</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>
+        {anime.attributes.titles.en || anime.attributes.titles.en_jp}
+      </h1>
       <img
         src={anime.attributes.posterImage.original}
         alt={anime.attributes.titles.en || anime.attributes.titles.en_jp}
+        className={styles.image}
       />
-      {/* Add more details as needed */}
+      <p className={styles.synopsis}>{anime.attributes.synopsis}</p>
+      <div className={styles.details}>
+        <div className={styles.detail}>
+          <strong>Type:</strong> {anime.attributes.showType}
+        </div>
+        <div className={styles.detail}>
+          <strong>Status:</strong> {anime.attributes.status}
+        </div>
+        <div className={styles.detail}>
+          <strong>Episodes:</strong> {anime.attributes.episodeCount}
+        </div>
+        <div className={styles.detail}>
+          <strong>Average Rating:</strong> {anime.attributes.averageRating}
+        </div>
+        <div className={styles.detail}>
+          <strong>Start Date:</strong> {anime.attributes.startDate}
+        </div>
+        <div className={styles.detail}>
+          <strong>End Date:</strong> {anime.attributes.endDate || 'Ongoing'}
+        </div>
+      </div>
     </div>
   );
 };

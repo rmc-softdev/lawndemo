@@ -47,7 +47,7 @@ export async function getDataDate() {
   }
 }
 
-const AnimeBrowse = () => {
+const AnimesBrowse = () => {
   const [sort, setSort] = useState('');
 
   // Determine the correct query function based on sort state
@@ -71,4 +71,4 @@ const AnimeBrowse = () => {
   );
 };
 
-export default AnimeBrowse;
+export default AnimesBrowse;
