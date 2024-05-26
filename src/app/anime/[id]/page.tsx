@@ -42,13 +42,18 @@ const SingleAnimePage = ({ params: { id } }: SingleAnimePageProps) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>{anime.attributes.titles.en || anime.attributes.titles.en_jp}</h1>
+      <h1 data-testId="anime-title" className={styles.title}>
+        {anime.attributes.titles.en || anime.attributes.titles.en_jp}
+      </h1>
       <img
+        data-testId="anime-img"
         src={anime.attributes.posterImage.original}
         alt={anime.attributes.titles.en || anime.attributes.titles.en_jp}
         className={styles.image}
       />
-      <p className={styles.synopsis}>{anime.attributes.synopsis}</p>
+      <p data-testId="anime-synopsis" className={styles.synopsis}>
+        {anime.attributes.synopsis}
+      </p>
       <div className={styles.details}>
         <div className={styles.detail}>
           <strong>Type:</strong> {anime.attributes.showType}
