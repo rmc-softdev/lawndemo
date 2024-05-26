@@ -8,7 +8,7 @@ interface SortProps {
 
 const Sort = ({ handleSort }: SortProps) => {
   return (
-    <Box sx={{ width: 150 }}>
+    <Box sx={{ width: 150, mb: 4 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Sort</InputLabel>
         <Select labelId="demo-simple-select-label" id="demo-simple-select" label="sort">

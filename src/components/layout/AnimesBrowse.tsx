@@ -25,9 +25,8 @@ const AnimesBrowse = () => {
   return (
     <div>
       <Sort handleSort={handleSort} />
-      {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      <Animes animes={data} />
+      <Animes animes={data} isLoading={isLoading} />
     </div>
   );
 };
