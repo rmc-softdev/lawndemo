@@ -1,5 +1,6 @@
 import { DATE_QUERY, DEFAULT_QUERY, POPULARIY_QUERY } from '@/client/constants';
 import { fetcher } from '@/client/utils/fetcher';
+import { Anime } from '@/types/anime';
 
 export type SortOption = 'popularity' | 'date' | ''
 
@@ -23,6 +24,6 @@ export const getSortedAnimes = async ({ queryKey }: SortQuery) => {
             break;
     }
 
-    const response = await fetcher(SORT_URL);
+    const response = await fetcher<Anime[]>(SORT_URL);
     return response;
 };

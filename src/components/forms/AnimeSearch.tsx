@@ -5,7 +5,11 @@ import { useQuery } from '@tanstack/react-query';
 import SearchedAnimes from '@/components/layout/SearchedAnimes';
 import styles from '@/styles/AnimeSearch.module.css';
 
-const fetchAnimes = async ({ queryKey }) => {
+interface SortQuery {
+  queryKey: ['anime-search', string]
+}
+
+const fetchAnimes = async ({ queryKey }: SortQuery) => {
   const [, text] = queryKey; // Destructure to get the text
   if (!text) return { data: [] };
   const response = await fetch(`https://kitsu.io/api/edge/anime?page[limit]=10&page[offset]=0&filter[text]=${text}`);

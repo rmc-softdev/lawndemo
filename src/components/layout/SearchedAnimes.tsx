@@ -1,13 +1,20 @@
 import { queryClient } from '@/client/QueryProvider';
 import styles from '@/styles/SearchedAnime.module.css';
+import { Anime } from '@/types/anime';
 import Link from 'next/link';
 
-const SearchedAnimes = ({ searchedAnime }) => {
+interface SearchedAnimesProps {
+  searchedAnime: Anime[]
+}
+
+const SearchedAnimes = ({ searchedAnime }: SearchedAnimesProps) => {
   const renderContent = () => {
     const reducedContent = searchedAnime.slice(0, 5);
     return reducedContent.map(anime => (
       <Link
-        onClick={() => queryClient.setQueryData(['selectedAnime'], anime)}
+        onClick={() => {
+          queryClient.setQueryData(['selectedAnime'], anime)
+        }}
         key={anime.id}
         href={`/anime/${anime.id}`}
       >

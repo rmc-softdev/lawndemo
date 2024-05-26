@@ -2,8 +2,7 @@
 import { queryClient } from '@/client/QueryProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@tanstack/react-query';
-import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Sort from '../Sort';
 import Animes from './Animes';
 import { selectSort, sortBy } from '@/store/sort/sortSlice';

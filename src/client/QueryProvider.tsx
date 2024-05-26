@@ -1,6 +1,5 @@
 'use client';
-import { getData } from '@/server/actions/getData';
-import { QueryClient, QueryClientProvider, QueryClientProviderProps, dehydrate } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider, dehydrate } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React from 'react';
 
