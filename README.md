@@ -1,4 +1,4 @@
-# Demo Project
+# Description
 
 This repository is a refactor of the legacy project page available at [AniWorld Advanced Search](https://aniworld.netlify.app/advanced-search/). The refactor includes various architectural enhancements, aiming to improve functionality while maintaining minimalistic designs. Several additional complexity layers, such as caching with Tanstack and Redux, were introduced to showcase these technologies.
 
