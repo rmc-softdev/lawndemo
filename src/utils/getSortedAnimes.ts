@@ -2,8 +2,13 @@ import { DATE_QUERY, DEFAULT_QUERY, POPULARIY_QUERY } from '@/client/constants';
 import { fetcher } from '@/client/utils/fetcher';
 import { Anime } from '@/types/anime';
 
-export type SortOption = 'popularity' | 'date' | '';
+export const SortOptions = {
+  popularity: 'popularity',
+  date: 'date',
+  default: '',
+} as const;
 
+export type SortOption = (typeof SortOptions)[keyof typeof SortOptions];
 interface SortQuery {
   queryKey: ['animes', SortOption];
 }

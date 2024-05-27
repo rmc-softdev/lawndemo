@@ -1,6 +1,6 @@
 import { selectSort } from '@/store/sort/sortSlice';
-import { SortOption } from '@/utils/getSortedAnimes';
-import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { SortOption, SortOptions } from '@/utils/getSortedAnimes';
+import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -19,30 +19,16 @@ const Sort = ({ handleSort }: SortProps) => {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           label="sort"
-          value={sort}
+          value={sort === '' ? 'Default' : sort}
           onChange={e => {
-            const value = e.target.value as SortOption;
+            const value = e.target.value === 'Default' ? '' : (e.target.value as SortOption);
 
             handleSort(value);
           }}
         >
-          <MenuItem value={'popularity' as const}>Popularity</MenuItem>
-          <MenuItem
-            value={'date' as const}
-            // onClick={() => {
-            //   handleSort('date');
-            // }}
-          >
-            Date
-          </MenuItem>
-          <MenuItem
-            value={'' as const}
-            // onClick={() => {
-            //   handleSort('');
-            // }}
-          >
-            Default
-          </MenuItem>
+          <MenuItem value={SortOptions.popularity}>Popularity</MenuItem>
+          <MenuItem value={SortOptions.date}>Date</MenuItem>
+          <MenuItem value={'Default'}>Default</MenuItem>
         </Select>
       </FormControl>
     </Box>
