@@ -4,6 +4,14 @@ This repository is a refactor of the legacy project page available at [AniWorld 
 
 Explore the refactored project here: [Lawndemo](https://lawndemo-e6yw.vercel.app/).
 
+Highlights:
+
+<div style="display: flex; align-items: center; justify-content: space-between;">
+  <img src="https://github.com/rmc-softdev/lawndemo/assets/64040204/5d0d0d11-0ec8-4e8b-bce1-0d10aeaee1cb" style="width: 49%; height: auto;" />
+  <img src="https://github.com/rmc-softdev/lawndemo/assets/64040204/7ef7395d-65eb-40c7-8d7a-8f5ddf26b4cf" style="width: 49%; height: auto;" />
+</div>
+
+
 # Steps to run
 
 1. Clone the repo.
